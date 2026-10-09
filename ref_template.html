@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-forge text-limestone"><head>
+<script>
+try{if(window.parent&&window.parent!==window){window.parent.promotekit_referral="1fd2949a-d22c-431b-92bf-02d4ad04ee24";window.parent.document.cookie="promotekit_referral=1fd2949a-d22c-431b-92bf-02d4ad04ee24;path=/;domain=.aura.build;max-age=31536000"}}catch(e){}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JNF Briones | Underground Utility Contracting</title>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Condensed:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+forge: '#111210',
+safety: '#E8622A',
+limestone: '#EDE9E0',
+iron: '#2C2C2A'
+},
+fontFamily: {
+condensed: ['"Barlow Condensed"', 'sans-serif'],
+drama: ['"Abril Fatface"', 'serif'],
+cormorant: ['"Cormorant Garamond"', 'serif'],
+mono: ['"IBM Plex Mono"', 'monospace']
+},
+transitionTimingFunction: {
+'ground': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+}
+}
+}
+}
+</script>
+<!-- Iconify -->
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* CSS resets and specific utilities avoiding px/em for text */
+html { font-size: 16px; } /* Base for rem, tailwind uses rem for text- sizing */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111210; }
+::-webkit-scrollbar-thumb { background: #2C2C2A; }
+.noise-overlay {
+position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+pointer-events: none; z-index: 9999; opacity: 0.05;
+}
+/* Industrial Clip Paths */
+.clip-trench-top { clip-path: polygon(0 4vh, 100% 0, 100% 100%, 0 100%); }
+.clip-trench-bottom { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vh), 0 100%); }
+.clip-shear { clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh)); }
+/* Button Fill Animation */
+.btn-fill::before {
+content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0;
+background-color: #2C2C2A; transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: -1;
+}
+.btn-fill:hover::before { height: 100%; }
+/* Ticker */
+@keyframes ticker { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+.ticker-col { animation: ticker 20s linear infinite; }
+/* Blinking Cursor */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s step-end infinite; }
+/* Marquee */
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 30s linear infinite; }
+</style>
+<script src="https://www.aura.build/FxFilter.js"></script>
+<link id="all-fonts-link-font-cormorant" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"><style id="all-fonts-style-font-cormorant">.font-cormorant { font-family: 'Cormorant Garamond', serif !important; }</style><!-- aura-ga4-start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2M6V79H761"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2M6V79H761');
+</script>
+<!-- aura-ga4-end -->
+</head>
+<body class="bg-forge text-limestone font-mono antialiased overflow-x-hidden selection:bg-safety selection:text-forge">
+
+    <!-- Global Noise Texture -->
+    <svg class="noise-overlay">
+        <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"></feTurbulence>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noiseFilter)"></rect>
+    </svg>
+
+    <!-- Navigation - Floating Command Bar -->
+    <nav id="navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-500 rounded-full">
+        <div class="flex items-center justify-between px-6 py-4 bg-forge/10 backdrop-blur-md rounded-full border border-limestone/10 group-hover:border-limestone/20">
+            <div class="flex flex-col">
+                <span class="font-condensed font-bold text-xl tracking-tight leading-none text-limestone uppercase">JNF Briones</span>
+                <span class="font-mono text-xs text-safety tracking-widest mt-1">Utility Contracting</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#expertise" class="text-limestone/80 hover:text-safety transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-safety after:transition-all hover:after:w-full hover:-translate-y-0.5 transform duration-300 text-sm tracking-wide relative">About</a>
+                <a href="#philosophy" class="text-limestone/80 hover:text-safety transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-safety after:transition-all hover:after:w-full hover:-translate-y-0.5 transform duration-300 text-sm tracking-wide relative">Services</a>
+                <a href="#process" class="text-limestone/80 hover:text-safety transition-colors after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-safety after:transition-all hover:after:w-full hover:-translate-y-0.5 transform duration-300 text-sm tracking-wide relative">Contact</a>
+            </div>
+
+            <button class="bg-safety text-forge px-6 py-2 rounded-full font-condensed font-bold tracking-widest text-sm uppercase relative overflow-hidden group active:scale-95 transition-transform duration-300 ease-ground btn-fill hover:text-safety border border-safety">
+                <span class="relative z-10 flex items-center gap-2">
+                    Request Bid <iconify-icon icon="solar:arrow-right-up-linear" style="stroke-width: 1.5;"></iconify-icon>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen w-full flex items-end justify-start overflow-hidden bg-forge pb-20 md:pb-32 px-6 md:px-12">
+        <!-- Background Image with Heavy Gradient -->
+        <div class="absolute inset-0 z-0 scale-105" id="hero-bg">
+            <div class="absolute inset-0 bg-gradient-to-t from-forge via-forge/80 to-transparent z-10"></div>
+            <div class="bg-center bg-gradient-to-r from-forge via-forge/50 to-transparent bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/012cfcdf-b8dd-43e1-aed7-21ef023ab6e4_1600w.jpg)] bg-cover z-10 absolute top-0 right-0 bottom-0 left-0 brightness-50"></div>
+            <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" alt="Heavy Machinery Excavation" class="w-full h-full object-cover opacity-60">
+        </div>
+
+        <!-- Vertical Ticker -->
+        <div class="overflow-hidden hidden md:block z-20 opacity-40 mix-blend-overlay w-8 h-full absolute top-0 right-4 [--fx-filter:blur(10px)_liquid-glass(0,10)_saturate(1.25)_noise(0.5,1,0)]">
+            <div class="ticker-col flex flex-col gap-8 text-xs font-mono whitespace-nowrap" style="writing-mode: vertical-rl;">
+                <span>BONDED · INSURED · DOT CERTIFIED · TEXAS LICENSED · 24HR RESPONSE</span>
+                <span>BONDED · INSURED · DOT CERTIFIED · TEXAS LICENSED · 24HR RESPONSE</span>
+                <span class="">BONDED · INSURED · DOT CERTIFIED · TEXAS LICENSED · 24HR RESPONSE</span>
+            </div>
+        
+                
+                
+            </div>
+
+        <div class="relative z-20 max-w-5xl">
+            <div class="hero-anim overflow-hidden">
+                <h2 class="font-condensed font-bold text-3xl md:text-5xl tracking-tight text-safety uppercase mb-2">Underground Utility Contracting is</h2>
+            </div>
+            <div class="hero-anim overflow-hidden">
+                <h1 class="font-cormorant font-semibold text-6xl md:text-8xl lg:text-[9rem] leading-[0.85] text-limestone tracking-tight">Our Domain.</h1>
+            </div>
+            
+            <div class="hero-anim flex flex-col sm:flex-row gap-4 sm:items-center mt-10 gap-x-4 gap-y-4 items-start">
+                <button class="bg-safety text-forge px-8 py-4 rounded-full font-condensed font-bold tracking-widest text-lg uppercase relative overflow-hidden group active:scale-95 hover:scale-105 transition-transform duration-300 ease-ground shadow-[0_0_30px_rgba(232,98,42,0.3)]">
+                    <span class="relative z-10">Deploy Our Crew</span>
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-ground"></div>
+                </button>
+                <button class="uppercase text-limestone border-limestone/30 hover:border-limestone hover:bg-limestone/10 active:scale-95 transition-all duration-300 ease-ground flex text-sm font-mono border rounded-full pt-4 pr-8 pb-4 pl-8 gap-x-2 gap-y-2 items-center">
+                    <iconify-icon icon="solar:play-circle-linear" class="text-xl"></iconify-icon> View Field Work
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features: Interactive Field Instruments -->
+    <section id="expertise" class="py-32 bg-limestone text-iron relative z-20 clip-trench-top clip-trench-bottom -mt-8 px-6 md:px-12">
+        <div class="max-w-7xl mr-auto ml-auto">
+            <div class="flex flex-col md:flex-row gap-6 border-iron/20 text-left border-b mb-20 pb-8 gap-x-6 gap-y-6 items-end justify-between">
+                <div class="">
+                    <span class="text-safety uppercase block text-sm font-semibold tracking-widest font-mono text-left mb-4">/// Core Capabilities</span>
+                    <h2 class="md:text-7xl uppercase text-forge text-5xl font-bold tracking-tight font-condensed text-left">Engineered for<br>the Underground.</h2>
+                </div>
+                <p class="text-iron/80 text-sm font-mono max-w-sm">Precision, safety, and Texas-grade toughness. We don't just move dirt; we construct reliable subterranean arteries.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[500px]">
+                
+                <!-- Card 1: Depth Finder Shuffler (Trench Safety) -->
+                <div class="bg-forge rounded-[2rem] p-8 relative overflow-hidden shadow-2xl flex flex-col justify-end group">
+                    <div class="absolute top-6 left-6 text-safety opacity-50"><iconify-icon icon="solar:shield-warning-linear" class="text-4xl"></iconify-icon></div>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-forge/90 z-10 pointer-events-none"></div>
+                    
+                    <div class="z-0 w-full mb-8 relative flex flex-col gap-4" id="list-container">
+    <div class="border-iron hover:border-safety/50 hover:bg-iron/30 transitionsm bg-forge/40">
+        <span class="font-mono text-xs text-safety block mb-1">REQ: TR-01</span>
+        <span class="font-condensed font-bold text-lg text-limestone">Shoring Installation</span>
+    </div>
+    <div class="border-iron hover:border-safety/50 hover:bg-iron/30 transition-all duration-300 ease-ground w-full border rounded-xl p-4 backdrop-blur-sm bg-forge/40">
+        <span class="font-mono text-xs text-safety block mb-1">REQ: TR-02</span>
+        <span class="font-condensed font-bold text-lg text-limestone">Soil Classification</span>
+    </div>
+    <div class="border-iron hover:border-safety/50 hover:bg-iron/30 transition-all duration-300 ease-ground w-full border rounded-xl p-4 backdrop-blur-sm bg-forge/40">
+        <span class="font-mono text-xs text-safety block mb-1">REQ: TR-03</span>
+        <span class="font-condensed font-bold text-lg text-limestone">Confined Space Entry</span>
+    </div>
+</div>
+
+                    <div class="relative z-20">
+                        <h3 class="font-condensed font-bold text-3xl tracking-tight text-limestone uppercase mb-2">Trench Safety Expertise</h3>
+                        <p class="font-mono text-xs text-limestone/60">OSHA-compliant excavation protocols protecting the crew and the schedule.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Live Dispatch (24/7 Response) -->
+                <div class="bg-iron rounded-[2rem] p-8 relative overflow-hidden shadow-2xl flex flex-col justify-between border border-forge/10">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center gap-2 text-safety font-mono text-xs font-bold">
+                            <div class="w-2 h-2 bg-safety rounded-full animate-pulse"></div>
+                            LIVE DISPATCH
+                        </div>
+                        <span class="font-mono text-xs text-limestone/40">FREQ: 144.0</span>
+                    </div>
+
+                    <div class="flex-grow text-safety/90 leading-relaxed border-safety/20 overflow-hidden text-sm font-mono border rounded-xl pt-6 pr-6 pb-6 pl-6 relative shadow-inner">
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-safety/5 via-transparent to-transparent pointer-events-none"></div>
+                        <span id="typewriter-text"></span><span class="cursor-blink inline-block w-2 h-4 bg-safety align-middle ml-1"></span>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="font-condensed font-bold text-3xl tracking-tight text-limestone uppercase mb-2">24/7 Emergency Response</h3>
+                        <p class="font-mono text-xs text-limestone/60">Municipal line breaks and critical infrastructure outages mitigated immediately.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Phase Scheduler (DOT Certified) -->
+                <div class="bg-limestone border border-iron/20 rounded-[2rem] p-8 relative overflow-hidden shadow-[0_20px_40px_rgba(17,18,16,0.1)] flex flex-col justify-between group">
+                    <div class="absolute top-6 right-6 text-iron opacity-20"><iconify-icon icon="solar:route-linear" class="text-5xl"></iconify-icon></div>
+                    
+                    <div class="mt-12 mb-8 relative">
+                        <!-- Timeline track -->
+                        <div class="absolute top-1/2 left-0 w-full h-px bg-iron/20 -translate-y-1/2"></div>
+                        
+                        <div class="flex justify-between relative z-10" id="scheduler-nodes">
+                            <!-- Nodes populated via JS -->
+                            <div class="flex flex-col items-center gap-2 schedule-node opacity-30 transition-all duration-300">
+                                <div class="w-4 h-4 rounded-full bg-iron border-2 border-limestone z-10 node-dot transition-colors duration-300"></div>
+                                <span class="font-mono text-[10px] font-bold">SURVEY</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 schedule-node opacity-30 transition-all duration-300">
+                                <div class="w-4 h-4 rounded-full bg-iron border-2 border-limestone z-10 node-dot transition-colors duration-300"></div>
+                                <span class="font-mono text-[10px] font-bold">PERMIT</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 schedule-node opacity-30 transition-all duration-300">
+                                <div class="w-4 h-4 rounded-full bg-iron border-2 border-limestone z-10 node-dot transition-colors duration-300"></div>
+                                <span class="font-mono text-[10px] font-bold">EXCAVATE</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2 schedule-node opacity-30 transition-all duration-300">
+                                <div class="w-4 h-4 rounded-full bg-iron border-2 border-limestone z-10 node-dot transition-colors duration-300"></div>
+                                <span class="font-mono text-[10px] font-bold">INSTALL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="font-condensed font-bold text-3xl tracking-tight text-forge uppercase mb-2">DOT-Certified Crews</h3>
+                        <p class="font-mono text-xs text-iron/70">Rigorous procedural compliance from traffic control planning to final backfill.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy: The Field Statement -->
+    <section id="philosophy" class="py-40 relative bg-forge overflow-hidden z-10 -mt-12 pb-56">
+        <!-- Parallax BG -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2070&auto=format&fit=crop" class="w-full h-[120%] object-cover" id="parallax-img" alt="Underground pipes">
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="philosophy-text opacity-0 translate-y-10">
+                <span class="font-mono text-sm text-limestone/60 block mb-6 uppercase tracking-widest border-l-2 border-safety pl-4">Most contractors focus on moving dirt quickly.</span>
+            </div>
+            <div class="philosophy-text opacity-0 translate-y-10">
+                <h2 class="font-cormorant font-semibold text-5xl md:text-7xl lg:text-[6rem] leading-tight text-limestone">We focus on <span class="text-safety italic">leaving a permanent legacy</span> beneath the surface.</h2>
+            </div>
+            
+            <!-- Badges -->
+            <div class="flex flex-wrap border-limestone/10 philosophy-badges opacity-0 border-t mt-20 pt-8 gap-x-6 gap-y-6 items-center">
+                <div class="flex items-center gap-2 font-mono text-xs text-limestone/80 uppercase">
+                    <iconify-icon icon="solar:verified-check-linear" class="text-safety text-lg"></iconify-icon> DOT Certified
+                </div>
+                <div class="w-1 h-1 bg-safety rounded-full"></div>
+                <div class="flex items-center gap-2 font-mono text-xs text-limestone/80 uppercase">
+                    <iconify-icon icon="solar:shield-check-linear" class="text-safety text-lg"></iconify-icon> OSHA 30 Configured
+                </div>
+                <div class="w-1 h-1 bg-safety rounded-full"></div>
+                <div class="flex items-center gap-2 font-mono text-xs text-limestone/80 uppercase">
+                    <iconify-icon icon="solar:map-point-linear" class="text-safety text-lg"></iconify-icon> Texas Licensed
+                </div>
+                <div class="w-1 h-1 bg-safety rounded-full hidden sm:block"></div>
+                <div class="flex items-center gap-2 font-mono text-xs text-limestone/80 uppercase">
+                    <iconify-icon icon="solar:lock-keyhole-linear" class="text-safety text-lg"></iconify-icon> Bonded &amp; Insured
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process: Sticky Stacking Job Phases -->
+    <section id="process" class="relative z-30 bg-limestone clip-shear -mt-20 pb-40 text-forge">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 pt-32 mb-20">
+            <span class="font-mono text-safety text-sm font-semibold tracking-widest uppercase block mb-4">/// Operational Protocol</span>
+            <h2 class="font-condensed font-bold text-5xl md:text-7xl tracking-tight uppercase">Execution Standard.</h2>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-6 md:px-12 process-container">
+            
+            <!-- Phase 1 -->
+            <div class="process-card sticky top-32 h-[60vh] md:h-[70vh] w-full bg-forge text-limestone rounded-[2.5rem] p-8 md:p-16 flex flex-col md:flex-row justify-between items-center overflow-hidden shadow-2xl mb-12 origin-top border border-iron">
+                <div class="relative z-10 w-full md:w-1/2">
+                    <span class="font-mono text-6xl md:text-8xl font-bold text-safety/20 block mb-4">01</span>
+                    <h3 class="font-condensed font-bold text-4xl md:text-6xl tracking-tight uppercase mb-6">Subsurface<br>Mobilization</h3>
+                    <p class="font-mono text-sm text-limestone/70 max-w-md">Utility locating, potholing, and environmental controls established before iron touches earth.</p>
+                </div>
+                <!-- Bore Path Visualizer -->
+                <div class="w-full md:w-1/2 h-full absolute md:relative right-0 opacity-20 md:opacity-100 pointer-events-none flex items-center justify-center">
+                    <svg width="100%" height="100%" viewBox="0 0 400 300" class="w-full max-w-md">
+                        <line x1="0" y1="50" x2="400" y2="50" stroke="#EDE9E0" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"></line>
+                        <line x1="0" y1="150" x2="400" y2="150" stroke="#EDE9E0" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"></line>
+                        <text x="10" y="45" fill="#E8622A" font-family="monospace" font-size="10">BASE - 2FT</text>
+                        <text x="10" y="145" fill="#E8622A" font-family="monospace" font-size="10">CLAY - 6FT</text>
+                        <path id="bore-path" d="M -50 20 Q 150 250, 450 180" fill="none" stroke="#E8622A" stroke-width="4" stroke-dasharray="1000" stroke-dashoffset="1000" stroke-linecap="round"></path>
+                        <circle cx="200" cy="170" r="15" fill="none" stroke="#E8622A" stroke-width="2" class="animate-ping opacity-50"></circle>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="process-card sticky top-40 h-[60vh] md:h-[70vh] w-full bg-iron text-limestone rounded-[2.5rem] p-8 md:p-16 flex flex-col md:flex-row justify-between items-center overflow-hidden shadow-[0_-20px_40px_rgba(17,18,16,0.5)] mb-12 origin-top border border-forge/50">
+                <div class="relative z-10 w-full md:w-1/2">
+                    <span class="font-mono text-6xl md:text-8xl font-bold text-safety/20 block mb-4">02</span>
+                    <h3 class="font-condensed font-bold text-4xl md:text-6xl tracking-tight uppercase mb-6">Directional<br>Installation</h3>
+                    <p class="font-mono text-sm text-limestone/70 max-w-md">Trenchless conduit placement and heavy excavation managed with telemetry and laser precision.</p>
+                </div>
+                <!-- Conduit Scanner -->
+                <div class="w-full md:w-1/2 h-full absolute md:relative right-0 opacity-20 md:opacity-100 pointer-events-none flex items-center justify-center">
+                    <div class="relative w-64 h-64 border border-limestone/20 rounded-full flex items-center justify-center overflow-hidden">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                            <div class="w-12 h-12 rounded-full border-2 border-limestone/30 conduit-circle"></div>
+                        </div>
+                        <div class="absolute top-0 left-0 w-full h-1 bg-safety shadow-[0_0_15px_#E8622A]" id="laser-scanner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="process-card sticky top-48 h-[60vh] md:h-[70vh] w-full bg-safety text-forge rounded-[2.5rem] p-8 md:p-16 flex flex-col md:flex-row justify-between items-center overflow-hidden shadow-[0_-20px_40px_rgba(17,18,16,0.6)] mb-12 origin-top">
+                <div class="relative z-10 w-full md:w-1/2">
+                    <span class="font-mono text-6xl md:text-8xl font-bold text-forge/20 block mb-4">03</span>
+                    <h3 class="font-condensed font-bold text-4xl md:text-6xl tracking-tight uppercase mb-6">Commissioning<br>&amp; Restoration</h3>
+                    <p class="font-mono text-sm text-forge/80 max-w-md">Mandrel testing, pressure verification, and surface restoration to state DOT specifications.</p>
+                </div>
+                <!-- Waveform -->
+                <div class="w-full md:w-1/2 h-full absolute md:relative right-0 opacity-20 md:opacity-100 pointer-events-none flex items-center justify-center">
+                    <svg width="100%" height="100%" viewBox="0 0 400 200" class="w-full max-w-md">
+                        <!-- Grid lines -->
+                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#111210" stroke-width="1" opacity="0.1"></path>
+                        </pattern>
+                        <rect width="100%" height="100%" fill="url(#grid)"></rect>
+                        
+                        <path id="waveform-path" d="M 0 100 L 50 100 L 70 40 L 90 160 L 110 80 L 130 110 L 160 100 L 250 100 L 270 40 L 290 160 L 310 80 L 330 110 L 360 100 L 400 100" fill="none" stroke="#111210" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000"></path>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Social Proof / Credentials -->
+    <section class="py-32 bg-forge text-limestone border-t border-iron relative z-40">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-iron/40 pb-20 mb-20">
+                <div class="text-center md:text-left">
+                    <div class="font-condensed font-bold text-7xl md:text-8xl text-safety tracking-tight mb-2"><span class="counter" data-target="450">0</span>+</div>
+                    <div class="font-mono text-xs text-limestone/60 uppercase tracking-widest">Projects Completed</div>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="font-condensed font-bold text-7xl md:text-8xl text-safety tracking-tight mb-2"><span class="counter" data-target="1200">0</span></div>
+                    <div class="font-mono text-xs text-limestone/60 uppercase tracking-widest">Miles of Conduit Laid</div>
+                </div>
+                <div class="text-center md:text-left">
+                    <div class="font-condensed font-bold text-7xl md:text-8xl text-safety tracking-tight mb-2"><span class="counter" data-target="15">0</span></div>
+                    <div class="font-mono text-xs text-limestone/60 uppercase tracking-widest">Years Operating in TX</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquee -->
+        <div class="w-full overflow-hidden bg-iron/20 py-8 border-y border-iron/40 transform -rotate-1 relative">
+            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-forge to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-forge to-transparent z-10"></div>
+            
+            <div class="flex whitespace-nowrap animate-marquee w-fit items-center gap-16 font-condensed font-bold text-3xl text-limestone/40 uppercase tracking-widest">
+                <span>MUNICIPAL INFRASTRUCTURE</span>
+                <span class="text-safety">///</span>
+                <span>FIBER OPTIC NETWORKS</span>
+                <span class="text-safety">///</span>
+                <span>TXDOT COMPLIANT</span>
+                <span class="text-safety">///</span>
+                <span>COMMERCIAL DEVELOPMENT</span>
+                <span class="text-safety">///</span>
+                <span>WATER &amp; SEWER MAINS</span>
+                <span class="text-safety">///</span>
+                <!-- Duplicate for seamless loop -->
+                <span>MUNICIPAL INFRASTRUCTURE</span>
+                <span class="text-safety">///</span>
+                <span>FIBER OPTIC NETWORKS</span>
+                <span class="text-safety">///</span>
+                <span>TXDOT COMPLIANT</span>
+                <span class="text-safety">///</span>
+                <span>COMMERCIAL DEVELOPMENT</span>
+                <span class="text-safety">///</span>
+                <span>WATER &amp; SEWER MAINS</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a09] text-limestone rounded-t-[3rem] mt-[-3rem] relative z-50 pt-24 pb-12 overflow-hidden border-t border-iron/30">
+        <!-- Texas Watermark -->
+        <svg class="absolute -right-20 bottom-0 opacity-[0.03] w-[600px] h-[600px] pointer-events-none" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 0 L100 20 L90 80 L50 100 L10 80 L0 20 Z"></path> <!-- Abstracted heavy shape representing solid ground/state -->
+        </svg>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+                
+                <div class="lg:col-span-2">
+                    <h2 class="font-condensed font-bold text-5xl tracking-tight uppercase mb-4 text-safety">JNF Briones</h2>
+                    <p class="font-mono text-sm text-limestone/60 max-w-sm mb-8">Underground utility contracting built on precision, safety, and Texas-grade toughness.</p>
+                    
+                    <div class="inline-flex items-center gap-3 bg-iron/30 border border-iron rounded-full px-4 py-2">
+                        <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
+                        <span class="font-mono text-xs tracking-widest uppercase">Operational — North Texas</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-xs text-safety tracking-widest uppercase mb-6">Operations</h4>
+                    <ul class="space-y-4 font-mono text-sm text-limestone/70">
+                        <li><a href="#" class="hover:text-safety transition-colors">Directional Boring</a></li>
+                        <li><a href="#" class="hover:text-safety transition-colors">Trenching &amp; Excavation</a></li>
+                        <li><a href="#" class="hover:text-safety transition-colors">Emergency Repair (24/7)</a></li>
+                        <li><a href="#" class="hover:text-safety transition-colors">Subsurface Locating</a></li>
+                    </ul>
+                </div>
+
+                <div class="">
+                    <h4 class="font-mono text-xs text-safety tracking-widest uppercase mb-6">Command</h4>
+                    <ul class="space-y-4 font-mono text-sm text-limestone/70">
+                        <li class="flex gap-2 gap-x-2 gap-y-2 items-center">(817) 430-9500</li>
+                        <li class="flex gap-x-2 gap-y-2 items-center"><iconify-icon icon="solar:letter-linear" class="text-lg"></iconify-icon> dispatch@jnfbriones.com</li>
+                        <li class="flex items-center gap-2 mt-6">
+                            <button class="w-full bg-limestone text-forge px-4 py-3 rounded-xl font-condensed font-bold tracking-widest text-sm uppercase hover:bg-safety hover:text-limestone transition-colors duration-300">Request Bid</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center border-t border-iron/30 pt-8 font-mono text-[10px] text-limestone/40 tracking-widest uppercase">
+                <p>© 2024 JNF Briones Utility Contracting. All Rights Reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-safety">Privacy</a>
+                    <a href="#" class="hover:text-safety">Terms</a>
+                    <a href="#" class="hover:text-safety">License Info</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic & Animation Engine -->
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // 1. Navbar Morph
+            const navbar = document.getElementById('navbar');
+            ScrollTrigger.create({
+                start: "top -50",
+                onUpdate: (self) => {
+                    if (self.progress > 0) {
+                        navbar.classList.add('bg-forge/80', 'border-limestone/20', 'shadow-lg');
+                        navbar.classList.remove('bg-forge/10', 'border-limestone/10');
+                    } else {
+                        navbar.classList.remove('bg-forge/80', 'border-limestone/20', 'shadow-lg');
+                        navbar.classList.add('bg-forge/10', 'border-limestone/10');
+                    }
+                }
+            });
+
+            // 2. Hero Animations
+            const heroAnim = gsap.utils.toArray('.hero-anim');
+            gsap.fromTo(heroAnim, 
+                { y: 60, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: "power4.out", delay: 0.2 }
+            );
+            gsap.fromTo("#hero-bg",
+                { scale: 1.04 },
+                { scale: 1, duration: 3, ease: "power2.out" }
+            );
+
+            // 3. Depth Finder Shuffler
+            const cards = document.querySelectorAll('.shuffler-card');
+            let order = [0, 1, 2]; // top to bottom
+            setInterval(() => {
+                order.unshift(order.pop());
+                cards.forEach((card, i) => {
+                    const pos = order.indexOf(i); // 0 is top
+                    card.style.transform = `translateY(${pos * 15}px) scale(${1 - pos * 0.05})`;
+                    card.style.zIndex = 3 - pos;
+                    card.style.opacity = 1 - pos * 0.3;
+                });
+            }, 3000);
+
+            // 4. Live Dispatch Typewriter
+            const terminal = document.getElementById('typewriter-text');
+            const msgs = [
+                "CREW DEPLOYED — Loop 820 Bore, 12IN HDPE, 6:14AM CST.",
+                "SITE SECURED — TXDOT permit active, traffic control set.",
+                "PRESSURE TEST PASSED — 150PSI held for 4hrs. Clear.",
+                "EMERGENCY CALLOUT — Main line breach at Sec 4. Rolling."
+            ];
+            let msgIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+
+            function typeWriter() {
+                const currentMsg = msgs[msgIdx];
+                if (isDeleting) {
+                    terminal.textContent = currentMsg.substring(0, charIdx - 1);
+                    charIdx--;
+                } else {
+                    terminal.textContent = currentMsg.substring(0, charIdx + 1);
+                    charIdx++;
+                }
+
+                let typingSpeed = isDeleting ? 30 : 70;
+
+                if (!isDeleting && charIdx === currentMsg.length) {
+                    typingSpeed = 3000; // Pause at end
+                    isDeleting = true;
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    msgIdx = (msgIdx + 1) % msgs.length;
+                    typingSpeed = 500; // Pause before start
+                }
+
+                setTimeout(typeWriter, typingSpeed);
+            }
+            setTimeout(typeWriter, 1000);
+
+            // 5. Phase Scheduler Animation
+            const nodes = document.querySelectorAll('.schedule-node');
+            let nodeIdx = 0;
+            setInterval(() => {
+                // Reset previous
+                nodes.forEach(n => {
+                    n.classList.remove('opacity-100', '-translate-y-2');
+                    n.classList.add('opacity-30');
+                    n.querySelector('.node-dot').classList.remove('bg-safety', 'border-safety');
+                    n.querySelector('.node-dot').classList.add('bg-iron', 'border-limestone');
+                });
+                
+                // Highlight current
+                const current = nodes[nodeIdx];
+                current.classList.remove('opacity-30');
+                current.classList.add('opacity-100', '-translate-y-2');
+                current.querySelector('.node-dot').classList.remove('bg-iron', 'border-limestone');
+                current.querySelector('.node-dot').classList.add('bg-safety', 'border-safety');
+
+                nodeIdx = (nodeIdx + 1) % nodes.length;
+            }, 2000);
+
+            // 6. Philosophy Parallax & Reveal
+            gsap.to("#parallax-img", {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#philosophy",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            gsap.to(".philosophy-text", {
+                y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power4.out",
+                scrollTrigger: {
+                    trigger: "#philosophy",
+                    start: "top 60%"
+                }
+            });
+            gsap.to(".philosophy-badges", {
+                opacity: 1, duration: 1, delay: 0.6, ease: "power2.out",
+                scrollTrigger: {
+                    trigger: "#philosophy",
+                    start: "top 60%"
+                }
+            });
+
+            // 7. Process Stacking Interaction
+            const processCards = gsap.utils.toArray('.process-card');
+            processCards.forEach((card, i) => {
+                // Determine SVG animation based on index
+                let onEnterFn;
+                if (i === 0) {
+                    onEnterFn = () => gsap.to("#bore-path", {strokeDashoffset: 0, duration: 2, ease: "power1.inOut"});
+                } else if (i === 1) {
+                    // Scanner handled by CSS mostly, but we can animate the line
+                    onEnterFn = () => gsap.fromTo("#laser-scanner", {top: 0}, {top: "100%", duration: 2, yoyo: true, repeat: -1, ease: "sine.inOut"});
+                } else if (i === 2) {
+                    onEnterFn = () => gsap.to("#waveform-path", {strokeDashoffset: 0, duration: 2, ease: "power1.inOut"});
+                }
+
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: "top center",
+                    onEnter: onEnterFn,
+                    once: i !== 1 // repeat scanner
+                });
+
+                if (i < processCards.length - 1) {
+                    gsap.to(card, {
+                        scale: 0.92,
+                        filter: "blur(12px)",
+                        opacity: 0.45,
+                        scrollTrigger: {
+                            trigger: processCards[i + 1],
+                            start: "top bottom",
+                            end: "top top+=128", // account for top offset
+                            scrub: true
+                        }
+                    });
+                }
+            });
+
+            // 8. Social Proof Counters
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: "top 80%",
+                    onEnter: () => {
+                        gsap.to(counter, {
+                            innerHTML: target,
+                            duration: 2.5,
+                            snap: { innerHTML: 1 },
+                            ease: "power2.out"
+                        });
+                    },
+                    once: true
+                });
+            });
+        });
+    </</script></body></html>

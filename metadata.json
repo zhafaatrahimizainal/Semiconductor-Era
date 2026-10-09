@@ -1,0 +1,6 @@
+{
+  "name": "SemiconductorEra — Advanced Semiconductor Foundry",
+  "description": "Next-generation semiconductor foundry, sub-2nm High-NA EUV lithography, 300mm pure-yield wafer fabrication, and 3D heterogeneous chiplet integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forge: #111210;
+  --color-forge-dark: #0a0a09;
+  --color-forge-card: #181917;
+  --color-forge-border: #242522;
+  --color-safety: #E8622A;
+  --color-safety-hover: #D0531F;
+  --color-safety-light: #FF7D47;
+  --color-limestone: #EDE9E0;
+  --color-limestone-muted: #D5CFBE;
+  --color-limestone-dark: #DDD8CD;
+  --color-iron: #2C2C2A;
+  --color-iron-light: #3D3D39;
+  --color-iron-border: #444440;
+  --color-silicon-cyan: #00E5FF;
+  --color-silicon-amber: #F59E0B;
+
+  --font-condensed: "Barlow Condensed", sans-serif;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-mono: "IBM Plex Mono", monospace;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Custom Industrial Clip Paths from Reference Template */
+.clip-trench-top {
+  clip-path: polygon(0 4vh, 100% 0, 100% 100%, 0 100%);
+}
+
+.clip-trench-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4vh), 0 100%);
+}
+
+.clip-shear {
+  clip-path: polygon(0 0, 100% 2vh, 100% 100%, 0 calc(100% - 2vh));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111210;
+}
+::-webkit-scrollbar-thumb {
+  background: #2C2C2A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8622A;
+}
+
+/* Cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Marquee scroll */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Silicon grid texture */
+.silicon-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(237, 233, 224, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(237, 233, 224, 0.04) 1px, transparent 1px);
+}
+
+.silicon-grid-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(44, 44, 42, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(44, 44, 42, 0.25) 1px, transparent 1px);
+}
+
