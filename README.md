@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 🔬 Semiconductor Era
 
-# Run and deploy your AI Studio app
+An interactive web application and platform exploring semiconductor technology, microchip fabrication, industry insights, and modern electronics engineering.
 
-This contains everything you need to run your app locally.
+[![Netlify Status](https://img.shields.io/badge/Hosted%20on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://semiconductorera.netlify.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://semiconductorera.netlify.app/)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](CONTRIBUTING.md)
 
-View your app in AI Studio: https://ai.studio/apps/f1469c1b-bbd9-4fc9-854d-77c624805026
+---
 
-## Run Locally
+## 🌐 Live Application
 
-**Prerequisites:**  Node.js
+Access the live platform at: **[https://semiconductorera.netlify.app/](https://semiconductorera.netlify.app/)**
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📌 Features
+
+- **⚡ Interactive Microchip & Silicon Analysis**: Explore the concepts behind transistor nodes, photolithography, wafer processing, and IC packaging.
+- **📊 Real-time Visualizations & Micro-interactions**: Smooth UI components built for seamless navigation across semiconductor modules and topics.
+- **📚 Educational Knowledge Base**: Comprehensive guides covering silicon manufacturing, MOSFETs/FinFETs/GAAFETs, memory technologies (DRAM, NAND), and AI hardware.
+- **📱 Responsive & Accessible Design**: Optimized for seamless viewing across desktops, tablets, and mobile devices.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React / JavaScript (ES6+)
+- **Icons & UI Components**: Lucide Icons / Custom UI components
+- **Styling**: CSS Modules / Modern CSS Grid & Flexbox
+- **Deployment & CI/CD**: Netlify
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally on your system.
+
+### Prerequisites
+
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16.0 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/zhafaatrahimizainal/Semiconductor-Era
+   cd Semiconductor-Era
